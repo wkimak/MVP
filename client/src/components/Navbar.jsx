@@ -1,5 +1,7 @@
 import React from 'react';
 
+/* --------- Level 2 --------- */
+
 const Navbar = (props) => (
       <div className='navbar'>
         <p> WorkSmart </p>

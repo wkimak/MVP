@@ -1,5 +1,7 @@
 import React from 'react';
 
+/* -------- Level 2 ------- */
+
   class SearchUrl extends React.Component {
       
       constructor(props){
@@ -20,14 +22,14 @@ import React from 'react';
        }
 
         render(){
+
+          console.log('URLLL INFOOO', this.props.title);
           return(
           <div>
             <form>
               <input value={this.state.inputVal} onChange={this.getUrl} placeholder='Search URL' className='searchInput' type='text' />
               <button onClick={(event) => { event.preventDefault(); this.props.search(this.state.inputVal)}}> Submit </button>
             </form>
-
-            <div className='searchResults-container'></div>
           </div>  
           );
         }

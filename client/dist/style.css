@@ -26,10 +26,62 @@ body{
 
 
 /* --------- SearchUrl Component ------ */
+
+form{
+	display: block;
+	margin: auto;
+	width: 525px;
+	margin-top: 50px;
+}
+
+form button{
+	height: 40px;
+	width: 100px;
+}
+
 .searchInput{
 	height: 40px;
 	width: 400px;
-	display: block;
-	margin: auto;
-	margin-top: 50px
+	display: inline-block;
+	
 }
+
+.searchResults-container{
+	height: 350px;
+	width: 600px;
+	border: 1px solid darkgrey;
+	background-color: white;
+	margin: auto;
+	margin-top: 100px;
+}
+
+
+/* ---------- Folders Styling ------------- */
+.folders{
+	height: 150px;
+	width: 250px;
+	background-color: lightblue;
+	position: absolute;
+}
+
+.folders:first-child{
+	top: 200px;
+	left: 75px;
+}
+
+.folders:nth-child(2){
+   top: 450px;
+   left: 75px;
+}
+
+.folders:nth-child(3){
+	top: 200px;
+	right: 75px;
+}
+
+.folders:last-child{
+	top: 450px;
+	right: 75px;
+}
+
+

@@ -7,11 +7,10 @@ const Folders = (props) => {
   return (
     <div className='folders-container'>
       {props.folders.map(function(folder, i){
-      	console.log('FOLDER', folder);
         return(
-          <div onClick={() => props.link !== '' ? props.onClick(folder.name, props.url) : null} className='folders' key={i}>
-            <b>{folder.name}</b>
-            <List urls={folder.urls} />
+          <div className='folders'>
+            <b onClick={() => props.link !== '' ? props.onClick(folder.name, props.url) : null} key={i}>{folder.name}</b>
+            <List urls={folder.urls} name={folder.name} delete={props.delete} />
           </div>
         );
       })}

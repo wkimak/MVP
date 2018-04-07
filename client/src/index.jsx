@@ -27,6 +27,7 @@ class App extends React.Component {
 		   this.searchUrl = this.searchUrl.bind(this);
        this.getInfo = this.getInfo.bind(this);
        this.addUrl = this.addUrl.bind(this);
+       this.deleteUrl = this.deleteUrl.bind(this);
 		}
 
 
@@ -84,6 +85,34 @@ class App extends React.Component {
     }
 
 
+    /* ------------ Delete URL ---------- */
+
+    deleteUrl(url, folder){
+      
+    
+    
+    for(var i = 0; i < this.state.folders.length; i++){
+      var copy = this.state.folders[i];
+      if(this.state.folders[i].name === folder){
+        this.state.folders[i].urls.splice(copy.urls.indexOf(url));
+      }
+    }  
+
+   this.setState(this.state);
+    
+
+
+      axios.post('http://localhost:3000/delete', {url, folder})
+      .then((res) => {
+          console.log('POST to /delete SUCCESSFUL', res);
+        })
+
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+
+
 
     /* ---------- retieve all links/corresponding folders on page render ------- */
     componentDidMount(){
@@ -106,7 +135,7 @@ class App extends React.Component {
       return(
         <div>
           <Navbar />
-          <Folders folders={this.state.folders} onClick={this.addUrl} url={this.state.url} />
+          <Folders folders={this.state.folders} onClick={this.addUrl} url={this.state.url} delete={this.deleteUrl} />
           <SearchUrl search={this.searchUrl} />
           <Content title={this.state.title} url={this.state.url} wordCount={this.state.wordCount} content={this.state.content} />
         </div>	

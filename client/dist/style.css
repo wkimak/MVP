@@ -68,13 +68,22 @@ select{
 	height: 50px;
 }
 
+.saveText{
+	margin-left: 300px;
+}
+
 
 /* ---------- Folders Styling ------------- */
 
+.folders b{
+	font-size: 22px;
+}
+
 .folders{
-	height: 120px;
+	height: 150px;
     overflow: scroll;
     display: inline-block;
+
 }
 
 .folders:first-child{
@@ -84,7 +93,7 @@ select{
 
 .folders:nth-child(2){
 	width: 25%;
-  background-color: magenta;
+  background-color: pink;
 }
 
 .folders:nth-child(3){

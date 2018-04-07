@@ -65,6 +65,19 @@ app.get('/folder', function(req, res){
   });
 });
 
+/* ------- DELETE Request response ----------- */
+app.post('/delete', function(req, res){
+
+  db.Folder.remove({url: req.body.url, folder: req.body.folder}, function(error, url){
+    if(error){
+      console.log(error);
+    } else{
+      console.log(url);
+    }
+  });
+
+});
+
 
 let port = 3000;
 

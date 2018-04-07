@@ -9,7 +9,6 @@ body{
 	background-color: rgb(213,213,213);
 }
 
-
 /* -------- Navbar Component ---------- */
 .navbar{
 	background-color: white;
@@ -23,7 +22,6 @@ body{
 .navbar button{
 	float: right;
 }
-
 
 /* --------- SearchUrl Component ------ */
 
@@ -46,7 +44,6 @@ form button{
 	
 }
 
-
 /* -------------- Contnet Component ----------- */
 
 .searchResults-container{
@@ -59,12 +56,6 @@ form button{
 	overflow: scroll;
 }
 
-.projectPicker{
-	background-color: white;
-	width: 700px;
-	height: 50px;
-	margin: auto;
-}
 
 select{
 	width: 200px;
@@ -79,6 +70,7 @@ select{
 
 
 /* ---------- Folders Styling ------------- */
+
 .folders{
 	height: 150px;
 	width: 250px;
@@ -92,7 +84,7 @@ select{
 }
 
 .folders:nth-child(2){
-   top: 450px;
+   top: 500px;
    left: 75px;
 }
 
@@ -102,7 +94,7 @@ select{
 }
 
 .folders:last-child{
-	top: 450px;
+	top: 500px;
 	right: 75px;
 }
 

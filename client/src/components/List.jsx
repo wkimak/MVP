@@ -6,19 +6,21 @@ constructor(props){
 	super(props);
 
 	this.state = {
-      visible: false,
-
+    visible: false,
 	}
 }
 
 render(){
   return(
-   <ul>
-     <li> {this.props.urls[0]} </li>
-   </ul>
+    <ul>
+      {this.props.urls.map((url) => {
+     	  return(
+          <li> {url} </li>
+        );
+       })}
+    </ul>
   );
-
-}
+ }
 }
 
 

@@ -1,17 +1,13 @@
-
+import React from 'react';
 
 const FolderContent = function(props){
-
   return(
-    
     <div className='url-list-container'>
       <ul>
         <li> </li>
       </ul>
     </div>
- 
-  	)
-
+  );
 }
 
 

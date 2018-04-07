@@ -10,17 +10,18 @@ import axios from 'axios';
 /* ---------- Level 1 ----------- */
 
 class App extends React.Component {
-		  constructor(props){
-		    super(props);
-		    this.state = {
-		      folders: [{name: 'project1', urls: []},
-                    {name: 'project2', urls: []},
-                    {name: 'project3', urls: []},
-                    {name: 'project4', urls: []}],
-          title: '',
-          url: '',
-          content: '',
-          wordCount:''
+  constructor(props){
+		super(props);
+		  this.state = {
+		    folders: [
+          {name: 'project1', urls: []},
+          {name: 'project2', urls: []},
+          {name: 'project3', urls: []},
+          {name: 'project4', urls: []}],
+        title: '',
+        url: '',
+        content: '',
+        wordCount:''
 		   }
 
 		   this.searchUrl = this.searchUrl.bind(this);
@@ -30,62 +31,60 @@ class App extends React.Component {
 
 
 
-      /* -------- GET Request ----------- */
-       getInfo(url){
-         axios.get('http://localhost:3000/url', {params:{url: url}})
-         .then((data) => {
-          console.log('GET REQUEST RESPONSE', data.data);
-          this.setState({
-            title: data.data.title,
-            url: data.data.url,
-            content: data.data.content,
-            wordCount: data.data.wordCount
-          })
-         })
+ /* -------- GET Request ----------- */
+    getInfo(url){
+      axios.get('http://localhost:3000/url', {params:{url: url}})
+      .then((data) => {
+        this.setState({
+          title: data.data.title,
+          url: data.data.url,
+          content: data.data.content,
+          wordCount: data.data.wordCount
+        })
+      })
 
-         .catch((err) => {
-            console.log('GET ERROR', err);
-         })
-       }
+      .catch((err) => {
+        console.log(err);
+      });
+    }
 
-        /* ---------- POST Request ---------- */
-        searchUrl(url){
-          axios.post('http://localhost:3000/url', {url})
-          .then((res) => {
-            this.getInfo(url);
-          	  console.log('POST from Client SUCCESS', res);
-          })
+  /* ---------- POST Request ---------- */
+    searchUrl(url){
+      axios.post('http://localhost:3000/url', {url})
+      .then((res) => {
+        this.getInfo(url);
+          console.log('POST from Client SUCCESS', res);
+        })
 
-          .catch((err) => {
-          	console.log(err);
-          })
+      .catch((err) => {
+        console.log(err);
+      })
+    }
+
+  /* -------- Push URL to specified folder -------- */
+    addUrl(folder){
+      for(var i = 0; i<this.state.folders.length; i++){
+        if(this.state.folders[i].name === folder){
+          if(!this.state.folders[i].urls.includes(this.state.title)){
+          this.state.folders[i].urls.push(this.state.title);
+         }
         }
-
-        /* -------- Push URL to specified folder -------- */
-        addUrl(folder){
-
-        for(var i = 0; i<this.state.folders.length; i++){
-          if(this.state.folders[i].name === folder){
-            this.state.folders[i].urls.push('hey');
-          }
-        }
-      
-          this.setState(this.state);
-        }
+      }
+        this.setState(this.state);
+    }
 		
 
 		render(){
-          return(
-            <div>
-            	<Navbar />
-            	<SearchUrl search={this.searchUrl} />
-            	<Folders folders={this.state.folders}/>
-              <Content title={this.state.title} url={this.state.url} wordCount={this.state.wordCount} content={this.state.content} onClick={this.addUrl} />
-            </div>	
-          );
-	   }
-
-    }
+      return(
+        <div>
+          <Navbar />
+          <SearchUrl search={this.searchUrl} />
+          <Folders folders={this.state.folders} link={this.state.url} onClick={this.addUrl} />
+          <Content title={this.state.title} url={this.state.url} wordCount={this.state.wordCount} content={this.state.content} />
+        </div>	
+      );
+	  }
+  }
 
 
 

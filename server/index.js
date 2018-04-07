@@ -16,17 +16,6 @@ const mercury = require('mercury-parser')(config.key);
 var db = require('../db/index');
 
 
-// Convert HTML to JSX
-//  var HTMLtoJSX = require('htmltojsx');
-
-//  var converter = new HTMLtoJSX({
-//   indent: '\t',
-//   hideComment: true,
-//   createClass: true,
-//   outputClassName: 'AwesomeComponent'
-// });
-
-
 app.use(express.static(__dirname + '/../client/dist'));
 
 /* ------------- POST Request response ------------ */
@@ -51,6 +40,21 @@ app.post('/url', function(req, res){
 app.get('/url', function(req, res){
   db.Url.find({url: req.query.url}, function(error, url){
      res.status(200).send(url[0]);
+  });
+});
+
+
+
+/* ----------- POST Request response ----------- */
+app.post('/folder', function(req, res){
+  db.newFolder(req.body.link, req.body.title, req.body.folder);
+  res.status(201).send();
+});
+
+/* ------- GET Request response ------- */
+app.get('/folder', function(req, res){
+  db.Folder.find({}, function(error, folder){
+    res.status(200).send(folder);
   });
 });
 

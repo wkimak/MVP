@@ -12,9 +12,20 @@ let urlSchema = mongoose.Schema({
   wordCount: Number
 });
 
+
+let folderSchema = mongoose.Schema({
+  folder: String,
+  title: String,
+  url: String,
+});
+
+
 let Url = mongoose.model('Url', urlSchema);
+let Folder = mongoose.model('Folder', folderSchema);
 
 // function to create new repo instance and save to MongoDB
+
+
 let newUrl = function(title, content, url, wordCount){
   new Url({
     title: title,
@@ -24,7 +35,17 @@ let newUrl = function(title, content, url, wordCount){
   }).save()
  }
 
+ let newFolder = function(url, title, folder){
+   new Folder({
+     url: url,
+     title: title,
+     folder: folder
+   }).save()
+ }
+
 
 module.exports.newUrl = newUrl;
 module.exports.Url = Url;
+module.exports.newFolder = newFolder;
+module.exports.Folder = Folder;
 

@@ -47,8 +47,8 @@ form button{
 /* -------------- Contnet Component ----------- */
 
 .searchResults-container{
-	height: 450px;
-	width: 700px;
+	min-height: 450px;
+	width: 80%;
 	border: 1px solid darkgrey;
 	background-color: white;
 	margin: auto;
@@ -72,30 +72,30 @@ select{
 /* ---------- Folders Styling ------------- */
 
 .folders{
-	height: 150px;
-	width: 250px;
+	min-height: 50px;
 	background-color: lightblue;
-	position: absolute;
+    display: inline-block;
+    overflow: scroll;
 }
 
 .folders:first-child{
-	top: 200px;
-	left: 75px;
+  width: 25%;
+  background-color: limegreen;
 }
 
 .folders:nth-child(2){
-   top: 500px;
-   left: 75px;
+	width: 25%;
+  background-color: magenta;
 }
 
 .folders:nth-child(3){
-	top: 200px;
-	right: 75px;
+	width: 25%;
+	background-color: red;
 }
 
 .folders:last-child{
-	top: 500px;
-	right: 75px;
+	width: 25%;
+	background-color: aqua;
 }
 
 

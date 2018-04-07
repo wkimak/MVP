@@ -35,10 +35,9 @@ let newUrl = function(title, content, url, wordCount){
   }).save()
  }
 
- let newFolder = function(url, title, folder){
+ let newFolder = function(url, folder){
    new Folder({
      url: url,
-     title: title,
      folder: folder
    }).save()
  }

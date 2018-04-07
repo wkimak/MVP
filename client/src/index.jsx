@@ -14,10 +14,10 @@ class App extends React.Component {
 		super(props);
 		  this.state = {
 		    folders: [
-          {name: 'project1', title:'', urls: []},
-          {name: 'project2', title:'', urls: []},
-          {name: 'project3', title:'', urls: []},
-          {name: 'project4', title:'', urls: []}],
+          {name: 'project1', urls: []},
+          {name: 'project2', urls: []},
+          {name: 'project3', urls: []},
+          {name: 'project4', urls: []}],
         title: '',
         url: '',
         content: '',
@@ -62,7 +62,7 @@ class App extends React.Component {
     }
 
   /* -------- Push URL to specified folder -------- */
-    addUrl(folder, link,  title){
+    addUrl(folder, url){
       for(var i = 0; i<this.state.folders.length; i++){
         if(this.state.folders[i].name === folder){
           if(!this.state.folders[i].urls.includes(this.state.title)){
@@ -71,10 +71,9 @@ class App extends React.Component {
         }
       }
 
-        this.setState(this.state);
+      this.setState(this.state);
 
-
-      axios.post('http://localhost:3000/folder', {folder, link, title})
+      axios.post('http://localhost:3000/folder', {folder, url})
       .then((res) => {
           console.log('POST to /folder SUCCESSFUL', res);
         })
@@ -92,10 +91,9 @@ class App extends React.Component {
       .then((res) => {
         for(var i = 0; i < res.data.length; i++){
            for(var x = 0; x < this.state.folders.length; x++){
-             console.log('data', res.data[i].folder, 'state', this.state.folders[x]);
              if(res.data[i].folder === this.state.folders[x].name){
+               console.log('snfjknfksdnf', res);
               this.state.folders[x].urls.push(res.data[i].url);
-              this.state.folders[x].title = res.data[i].title;
              }
            }
         }
@@ -108,7 +106,7 @@ class App extends React.Component {
       return(
         <div>
           <Navbar />
-          <Folders folders={this.state.folders} link={this.state.url} onClick={this.addUrl} />
+          <Folders folders={this.state.folders} onClick={this.addUrl} url={this.state.url} />
           <SearchUrl search={this.searchUrl} />
           <Content title={this.state.title} url={this.state.url} wordCount={this.state.wordCount} content={this.state.content} />
         </div>	

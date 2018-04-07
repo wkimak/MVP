@@ -47,7 +47,14 @@ app.get('/url', function(req, res){
 
 /* ----------- POST Request response ----------- */
 app.post('/folder', function(req, res){
-  db.newFolder(req.body.link, req.body.title, req.body.folder);
+
+  db.Folder.findOne({folder: req.body.folder, url: req.body.url}, function(error, folder){
+    console.log('FOLDERERER', folder);
+    if(!folder && req.body.url !== ''){
+    db.newFolder(req.body.url, req.body.folder);
+  }
+  })  
+    
   res.status(201).send();
 });
 

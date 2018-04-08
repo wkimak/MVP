@@ -15,8 +15,7 @@ let urlSchema = mongoose.Schema({
 
 let folderSchema = mongoose.Schema({
   folder: String,
-  title: String,
-  url: String,
+  url: String
 });
 
 
@@ -35,11 +34,11 @@ let newUrl = function(title, content, url, wordCount){
   }).save()
  }
 
- let newFolder = function(url, folder){
-   new Folder({
-     url: url,
-     folder: folder
-   }).save()
+let newFolder = function(url, folder){
+  new Folder({
+    url: url,
+    folder: folder
+  }).save()
  }
 
 

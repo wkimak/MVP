@@ -86,22 +86,16 @@ class App extends React.Component {
 
 
     /* ------------ Delete URL ---------- */
-
     deleteUrl(url, folder){
-      
-    
-    
-    for(var i = 0; i < this.state.folders.length; i++){
-      var copy = this.state.folders[i];
-      if(this.state.folders[i].name === folder){
-        this.state.folders[i].urls.splice(copy.urls.indexOf(url));
-      }
-    }  
+      for(var i = 0; i < this.state.folders.length; i++){
+        var copy = this.state.folders[i];
+        if(this.state.folders[i].name === folder){
+          this.state.folders[i].urls.splice(copy.urls.indexOf(url));
+        }
+      }  
 
-   this.setState(this.state);
+      this.setState(this.state);
     
-
-
       axios.post('http://localhost:3000/delete', {url, folder})
       .then((res) => {
           console.log('POST to /delete SUCCESSFUL', res);

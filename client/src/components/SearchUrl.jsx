@@ -7,7 +7,6 @@ class SearchUrl extends React.Component {
       this.state = {
         inputVal: ''
       }
-    
     this.getUrl = this.getUrl.bind(this);
   }
 

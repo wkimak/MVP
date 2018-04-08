@@ -8,8 +8,6 @@ app.use(bodyParser.json());
 
 // key
 var config = require('../config');
-// request module
-var request = require('request');
 //mercury parser 
 const mercury = require('mercury-parser')(config.key);
 // DB
@@ -29,7 +27,7 @@ app.post('/url', function(req, res){
       }) 
   }).catch(err => {
     console.log('Error: ', err);
-})
+  })
 
   res.status(201).send();
 });
@@ -47,7 +45,6 @@ app.get('/url', function(req, res){
 
 /* ----------- POST Request response ----------- */
 app.post('/folder', function(req, res){
-
   db.Folder.findOne({folder: req.body.folder, url: req.body.url}, function(error, folder){
     console.log('FOLDERERER', folder);
     if(!folder && req.body.url !== ''){
@@ -67,7 +64,6 @@ app.get('/folder', function(req, res){
 
 /* ------- DELETE Request response ----------- */
 app.post('/delete', function(req, res){
-
   db.Folder.remove({url: req.body.url, folder: req.body.folder}, function(error, url){
     if(error){
       console.log(error);
